@@ -1,0 +1,12 @@
+.visualize-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-end !important;
+
+  .node {
+    flex-grow: 1;
+    position: relative;
+    margin: 0;
+  }
+}
