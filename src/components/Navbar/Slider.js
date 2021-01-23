@@ -2,11 +2,12 @@ import React, { useContext } from 'react';
 import DataContext from '../../contexts/DataContext';
 import {setArray} from '../../utils/actions'
 
-const Slider = ({disabled}) => {
+const Slider = ({disabled, reset}) => {
   const { state, dispatch } = useContext(DataContext);
 
   const handleChange = (e) => {
     e.preventDefault();
+    reset();
     dispatch(setArray(+e.target.value))
   };
 

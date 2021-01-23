@@ -1,6 +1,6 @@
-import React, { createContext, useReducer, useState } from 'react';
+import React, { createContext, useReducer } from 'react';
 
-import { randomArray, sleep } from '../utils/utils';
+import { randomArray } from '../utils/utils';
 import { SPEED, MAX_VALUE } from '../utils/constants';
 import { ALGORITHM } from '../utils/algorithms';
 import reducer from './reducer';

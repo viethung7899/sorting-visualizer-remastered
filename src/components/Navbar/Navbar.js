@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import Slider from './Slider';
 import DataContext from '../../contexts/DataContext';
 import algorithms from '../../utils/algorithms';
-import { ACTION, setArray, mark } from '../../utils/actions';
+import { ACTION, setArray } from '../../utils/actions';
 import { sleep } from '../../utils/utils';
 import AlgorithmSelector from './AlgorithmSelector';
 import SpeedSelector from './SpeedSelector';
@@ -11,6 +11,7 @@ import SpeedSelector from './SpeedSelector';
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
   const [running, setRunning] = useState(false);
+  const [done, setDone] = useState(false);
   const { state, dispatch } = useContext(DataContext);
 
   const sort = async () => {
@@ -22,11 +23,7 @@ const Navbar = () => {
       else dispatch(action);
     }
     setRunning(false);
-  };
-
-  const closeNavMenu = (action) => {
-    action();
-    setIsActive(false);
+    setDone(true);
   };
 
   return (
@@ -63,11 +60,17 @@ const Navbar = () => {
           class={`navbar-menu ${isActive ? 'is-active' : ''}`}
         >
           <div class="navbar-start">
-            <AlgorithmSelector closeNavMenu={closeNavMenu} />
-            <SpeedSelector closeNavMenu={closeNavMenu} />
+            <AlgorithmSelector
+              closeMenu={() => setIsActive(false)}
+              running={running}
+            />
+            <SpeedSelector
+              closeMenu={() => setIsActive(false)}
+              running={running}
+            />
 
             <div class="navbar-item">
-              <Slider disabled={running} />
+              <Slider disabled={running} reset={() => setDone(false)} />
             </div>
           </div>
 
@@ -76,19 +79,26 @@ const Navbar = () => {
               <div className="buttons">
                 <button
                   className="button is-primary"
-                  onClick={() => closeNavMenu(() => sort())}
+                  onClick={() => {
+                    sort();
+                    setIsActive(false);
+                  }}
+                  disabled={running || done}
                 >
-                  <strong>Sort</strong>
+                  <i class="fas fa-play fa-lg"></i>
                 </button>
                 <button
                   class="button is-danger"
-                  onClick={() => dispatch(setArray(state.array.length))}
+                  onClick={() => {
+                    setDone(false);
+                    dispatch(setArray(state.array.length));
+                  }}
                   disabled={running}
                 >
-                  <strong>Randomize</strong>
+                  <i class="fas fa-dice-five fa-lg"></i>
                 </button>
-                <button class="button is-light">
-                  <strong>View source code</strong>
+                <button class="button is-dark">
+                  <i class="fab fa-github fa-lg"></i>
                 </button>
               </div>
             </div>

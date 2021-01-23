@@ -20,4 +20,8 @@ export const SPEED = {
     name: 'Fast',
     value: 50
   },
+  VERY_FAST: {
+    name: 'Very fast',
+    value: 10
+  },
 };

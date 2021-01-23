@@ -51,6 +51,17 @@ const reducer = (state, action) => {
         array: arrayCopy,
       };
 
+    case ACTION.MODIFY:
+      const { index, value } = payload;
+      arrayCopy[index] = {
+        ...state.array[index],
+        value: value,
+      };
+      return {
+        ...state,
+        array: arrayCopy,
+      };
+
     default:
       return state;
   }

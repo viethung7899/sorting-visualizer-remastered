@@ -4,7 +4,7 @@ import DataContext from '../../contexts/DataContext';
 import { SPEED } from '../../utils/constants';
 import { changeSpeed } from '../../utils/actions';
 
-const SpeedSelector = ({ closeNavMenu }) => {
+const SpeedSelector = ({ closeMenu, running }) => {
   const { state, dispatch } = useContext(DataContext);
 
   return (
@@ -16,8 +16,15 @@ const SpeedSelector = ({ closeNavMenu }) => {
           return (
             <a
               key={key}
-              class={`navbar-item ${state.speed === value && 'has-text-weight-bold'}`}
-              onClick={() => closeNavMenu(() => dispatch(changeSpeed(value)))}
+              class={`navbar-item ${
+                state.speed === value && 'has-text-weight-bold'
+              }`}
+              onClick={() => {
+                if (!running) {
+                  dispatch(changeSpeed(value));
+                  closeMenu();
+                }
+              }}
             >
               {value.name}
             </a>

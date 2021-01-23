@@ -6,6 +6,7 @@ export const ACTION = {
   UNMARK: 'UNMARK',
   SWAP: 'SWAP',
   WAIT: 'WAIT',
+  MODIFY: 'MODIFY',
 };
 
 export const setArray = (size) => {
@@ -50,6 +51,16 @@ export const swap = (i1, i2) => {
   return {
     type: ACTION.SWAP,
     payload: { i1, i2 },
+  };
+};
+
+export const modify = (index, value) => {
+  return {
+    type: ACTION.MODIFY,
+    payload: {
+      index,
+      value,
+    },
   };
 };
 

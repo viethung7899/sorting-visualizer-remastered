@@ -4,7 +4,7 @@ import DataContext from '../../contexts/DataContext';
 import { ALGORITHM } from '../../utils/algorithms';
 import { setAlgorithm } from '../../utils/actions';
 
-const AlgorithmSelector = ({ closeNavMenu }) => {
+const AlgorithmSelector = ({ closeMenu, running }) => {
   const { state, dispatch } = useContext(DataContext);
 
   return (
@@ -19,7 +19,12 @@ const AlgorithmSelector = ({ closeNavMenu }) => {
               class={`navbar-item ${
                 state.algorithm === value && 'has-text-weight-bold'
               }`}
-              onClick={() => closeNavMenu(() => dispatch(setAlgorithm(value)))}
+              onClick={() => {
+                if (!running) {
+                  dispatch(setAlgorithm(value));
+                  closeMenu();
+                }
+              }}
             >
               {value.name}
             </a>
