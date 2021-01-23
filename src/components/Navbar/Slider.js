@@ -1,27 +1,29 @@
-import React, {useState} from 'react';
+import React, { useContext } from 'react';
+import DataContext from '../../contexts/DataContext';
+import {setArray} from '../../utils/actions'
 
-const Slider = () => {
-  const [size, setSize] = useState(10);
+const Slider = ({disabled}) => {
+  const { state, dispatch } = useContext(DataContext);
 
   const handleChange = (e) => {
     e.preventDefault();
-    setSize(e.target.value);
-  }
+    dispatch(setArray(+e.target.value))
+  };
 
   return (
     <>
-    <span>Size</span>
-    <input
-      class="slider is-fullwidth mx-2"
-      step="1"
-      min="10"
-      max="200"
-      type="range"
-      value={size}
-      onChange={handleChange}
-    />
-    <span>{size}</span>
-    <span></span>
+      <span>Size</span>
+      <input
+        class="slider is-fullwidth mx-2"
+        step="1"
+        min="3"
+        max="150"
+        type="range"
+        value={state.array.length}
+        onChange={handleChange}
+        disabled={disabled}
+      />
+      <span>{state.array.length}</span>
     </>
   );
 };
