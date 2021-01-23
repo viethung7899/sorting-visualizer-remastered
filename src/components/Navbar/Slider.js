@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
+import {MIN_SIZE, MAX_SIZE} from '../../utils/constants'
 import DataContext from '../../contexts/DataContext';
-import {setArray} from '../../utils/actions'
+import {setArray} from '../../utils/actions';
 
 const Slider = ({disabled, reset}) => {
   const { state, dispatch } = useContext(DataContext);
@@ -17,8 +18,8 @@ const Slider = ({disabled, reset}) => {
       <input
         class="slider is-fullwidth mx-2"
         step="1"
-        min="3"
-        max="150"
+        min={MIN_SIZE}
+        max={MAX_SIZE}
         type="range"
         value={state.array.length}
         onChange={handleChange}

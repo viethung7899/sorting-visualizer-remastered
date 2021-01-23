@@ -5,7 +5,9 @@ export const STATUS = {
   RESERVE: 'has-background-warning',
 };
 
-export const MAX_VALUE = 1000;
+export const MIN_SIZE = 10;
+export const MAX_SIZE = 150;
+export const MAX_VALUE = 500;
 
 export const SPEED = {
   SLOW: {
