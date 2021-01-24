@@ -68,38 +68,41 @@ const Navbar = () => {
               closeMenu={() => setIsActive(false)}
               running={running}
             />
-
-            <div class="navbar-item">
-              <Slider disabled={running} reset={() => setDone(false)} />
-            </div>
+            <Slider disabled={running} reset={() => setDone(false)} />
           </div>
 
           <div class="navbar-end">
             <div class="navbar-item">
               <div className="buttons">
                 <button
-                  className="button is-primary"
+                  className="button is-primary has-tooltip-arrow has-tooltip-bottom"
                   onClick={() => {
                     sort();
                     setIsActive(false);
                   }}
                   disabled={running || done}
+                  data-tooltip="Sort"
                 >
                   <i class="fas fa-play fa-lg"></i>
                 </button>
                 <button
-                  class="button is-danger"
+                  class="button is-danger has-tooltip-arrow has-tooltip-bottom"
                   onClick={() => {
                     setDone(false);
                     dispatch(setArray(state.array.length));
                   }}
                   disabled={running}
+                  data-tooltip="Randomize"
                 >
                   <i class="fas fa-dice-five fa-lg"></i>
                 </button>
-                <button class="button is-dark">
+                <a
+                  class="button is-dark has-tooltip-arrow has-tooltip-bottom"
+                  href="https://github.com/viethung7899/sorting-visualizer-remastered"
+                  data-tooltip="Source code"
+                >
                   <i class="fab fa-github fa-lg"></i>
-                </button>
+                </a>
               </div>
             </div>
           </div>

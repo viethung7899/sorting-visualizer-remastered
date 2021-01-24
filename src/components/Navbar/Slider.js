@@ -1,19 +1,20 @@
 import React, { useContext } from 'react';
-import {MIN_SIZE, MAX_SIZE} from '../../utils/constants'
+import { MIN_SIZE, MAX_SIZE } from '../../utils/constants';
 import DataContext from '../../contexts/DataContext';
-import {setArray} from '../../utils/actions';
+import { setArray } from '../../utils/actions';
+import './Slider.scss';
 
-const Slider = ({disabled, reset}) => {
+const Slider = ({ disabled, reset }) => {
   const { state, dispatch } = useContext(DataContext);
 
   const handleChange = (e) => {
     e.preventDefault();
     reset();
-    dispatch(setArray(+e.target.value))
+    dispatch(setArray(+e.target.value));
   };
 
   return (
-    <>
+    <div class="navbar-item slider">
       <span>Size</span>
       <input
         class="slider is-fullwidth mx-2"
@@ -26,7 +27,7 @@ const Slider = ({disabled, reset}) => {
         disabled={disabled}
       />
       <span>{state.array.length}</span>
-    </>
+    </div>
   );
 };
 

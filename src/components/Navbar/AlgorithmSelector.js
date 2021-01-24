@@ -9,6 +9,7 @@ const AlgorithmSelector = ({ closeMenu, running }) => {
 
   return (
     <div class="navbar-item has-dropdown is-hoverable">
+      {/* eslint-disable */}
       <a class="navbar-link">Algorithms</a>
 
       <div class="navbar-dropdown">
@@ -31,6 +32,7 @@ const AlgorithmSelector = ({ closeMenu, running }) => {
           );
         })}
       </div>
+      {/* eslint-enable */}
     </div>
   );
 };

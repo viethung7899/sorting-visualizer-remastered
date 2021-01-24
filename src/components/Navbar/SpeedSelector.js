@@ -9,6 +9,7 @@ const SpeedSelector = ({ closeMenu, running }) => {
 
   return (
     <div class="navbar-item has-dropdown is-hoverable">
+      {/* eslint-disable */}
       <a class="navbar-link">Animation speed</a>
 
       <div class="navbar-dropdown">
@@ -31,6 +32,7 @@ const SpeedSelector = ({ closeMenu, running }) => {
           );
         })}
       </div>
+      {/* eslint-enable */}
     </div>
   );
 };

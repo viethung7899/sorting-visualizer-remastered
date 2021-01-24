@@ -10,7 +10,7 @@ const insertionSort = (array) => {
       actions.push(mark(STATUS.SELECTED, j - 1, j), wait);
       actions.push(swap(j - 1, j));
       swapArray(array, j - 1, j);
-      if (j == i) actions.push(mark(STATUS.RESERVE, i));
+      if (j === i) actions.push(mark(STATUS.RESERVE, i));
       else actions.push(unmark(j));
       actions.push(unmark(j - 1), wait);
     }

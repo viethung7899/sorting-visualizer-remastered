@@ -8,9 +8,9 @@ import reducer from './reducer';
 const DataContext = createContext();
 
 const initState = {
-  array: randomArray(10, MAX_VALUE),
-  speed: SPEED.SLOW,
-  algorithm: ALGORITHM.BUBBLE,
+  array: randomArray(50, MAX_VALUE),
+  speed: SPEED.FAST,
+  algorithm: ALGORITHM.QUICK,
 };
 
 export const DataContextProvider = (props) => {
